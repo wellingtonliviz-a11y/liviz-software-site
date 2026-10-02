@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.name }} | Liviz Software{% endblock %}
+
+{% block content %}
+
+<section class="project project-detail">
+
+  <a class="project-back" href="{{ url_for('projetos') }}">
+    ← Voltar para projetos
+  </a>
+
+  <!-- HERO DO PROJETO -->
+  <div class="project-detail-hero">
+
+    <div class="project-detail-copy">
+      <label>{{ project.category }}</label>
+
+      <h1>{{ project.name }}</h1>
+
+      <p class="lead">
+        {{ project.description }}
+      </p>
+    </div>
+
+    <div class="project-detail-logo">
+      <img
+        src="{{ url_for('static', filename=project.logo) }}"
+        alt="{{ project.name }}"
+      >
+    </div>
+
+  </div>
+
+
+  <!-- RECURSOS -->
+  <div class="panel project-features">
+
+    <h2>Principais recursos</h2>
+
+    <ul>
+      {% for f in project.features %}
+        <li>{{ f }}</li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+
+  <!-- GALERIA -->
+  <section class="project-gallery-section">
+
+    <div class="project-gallery-head">
+
+      <div>
+        <label>O SISTEMA NA PRÁTICA</label>
+        <h2>Conheça algumas telas do projeto.</h2>
+      </div>
+
+      <p>
+        Veja algumas telas reais da solução desenvolvida e
+        como o sistema funciona no dia a dia.
+      </p>
+
+    </div>
+
+
+    <div class="project-gallery">
+
+      <!-- TELA 01 -->
+      <div class="gallery-item">
+
+        <div class="gallery-image">
+          <img
+            src="{{ url_for('static', filename=project.gallery_folder + '/tela-01.png') }}"
+            alt="{{ project.name }} - Tela 01"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="gallery-caption">
+          <span>01</span>
+          <strong>Dashboard / tela principal</strong>
+        </div>
+
+      </div>
+
+
+      <!-- TELA 02 -->
+      <div class="gallery-item">
+
+        <div class="gallery-image">
+          <img
+            src="{{ url_for('static', filename=project.gallery_folder + '/tela-02.png') }}"
+            alt="{{ project.name }} - Tela 02"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="gallery-caption">
+          <span>02</span>
+          <strong>Funcionalidades do sistema</strong>
+        </div>
+
+      </div>
+
+
+      <!-- TELA 03 -->
+      <div class="gallery-item">
+
+        <div class="gallery-image">
+          <img
+            src="{{ url_for('static', filename=project.gallery_folder + '/tela-03.png') }}"
+            alt="{{ project.name }} - Tela 03"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="gallery-caption">
+          <span>03</span>
+          <strong>Detalhes da operação</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</section>
+
+
+<!-- CTA -->
+<section class="banner">
+
+  <label>PROJETO PERSONALIZADO</label>
+
+  <h2>
+    Quer uma solução parecida para o seu negócio?
+  </h2>
+
+  <p>
+    Usamos a necessidade da empresa como ponto de partida
+    para desenvolver uma solução adequada ao processo.
+  </p>
+
+  <a
+    class="btn"
+    href="{{ project_whatsapp }}"
+    target="_blank"
+    rel="noopener"
+  >
+    Solicitar um orçamento
+  </a>
+
+</section>
+
+{% endblock %}

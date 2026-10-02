@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Contato | Liviz Software{% endblock %}
+{% block content %}
+<section class="page"><label>CONTATO</label><h1>Vamos conversar sobre sua ideia?</h1><p>Explique brevemente o que sua empresa precisa. Você pode enviar os dados abaixo e continuar a conversa pelo WhatsApp.</p></section>
+<section class="section contact">
+  <form method="post">
+    {% if whatsapp_contact %}<div class="success">Mensagem preparada. <a href="{{ whatsapp_contact }}" target="_blank" rel="noopener"><b>Clique aqui para continuar no WhatsApp →</b></a></div>{% endif %}
+    <label>Nome<input name="nome" required></label>
+    <label>E-mail<input type="email" name="email" required></label>
+    <label>Empresa<input name="empresa"></label>
+    <label>Como podemos ajudar?<textarea name="mensagem" rows="6" required placeholder="Conte brevemente o que você precisa organizar, automatizar ou desenvolver..."></textarea></label>
+    <button class="btn" type="submit">Continuar pelo WhatsApp</button>
+  </form>
+  <div class="contact-info"><label>LIVIZ SOFTWARE</label><h2>Tecnologia que simplifica negócios.</h2><p>Projetos personalizados, sistemas de gestão, automações e integrações.</p><div class="contact-line"><small>WHATSAPP</small><a href="{{ whatsapp_url }}" target="_blank" rel="noopener">{{ whatsapp_number_display }}</a></div><div class="contact-line"><small>E-MAIL</small><a href="mailto:{{ contact_email }}">{{ contact_email }}</a><em>Em configuração</em></div></div>
+</section>
+{% endblock %}

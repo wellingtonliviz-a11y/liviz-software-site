@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Projetos | Liviz Software{% endblock %}
+{% block content %}
+<section class="page">
+  <label>PORTFÓLIO</label>
+  <h1>Projetos que resolvem problemas reais.</h1>
+  <p>Conheça algumas das soluções desenvolvidas pela Liviz Software.</p>
+</section>
+<section class="section projects-page-grid">
+  <div class="grid three">
+    {% for p in projects %}
+    <a class="card project-card" href="{{ url_for('projeto', slug=p.slug) }}">
+      <div class="project-logo-wrap">
+        <img class="project-logo" src="{{ url_for('static', filename=p.logo) }}" alt="{{ p.name }}">
+      </div>
+      <small>{{ p.category }}</small>
+      <h2>{{ p.name }}</h2>
+      <p>{{ p.description }}</p>
+      <b>Ver detalhes →</b>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

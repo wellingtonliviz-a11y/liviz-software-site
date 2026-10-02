@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Liviz Software | Tecnologia que simplifica negócios{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <label>SISTEMAS SOB MEDIDA • AUTOMAÇÃO • TECNOLOGIA</label>
+    <h1>Software pensado para o <span>seu negócio.</span></h1>
+    <p>Transformamos necessidades reais em sistemas simples, organizados e acessíveis para reduzir tarefas manuais e dar mais controle à sua operação.</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Solicitar um orçamento</a>
+      <a class="btn ghost" href="#projetos">Conhecer projetos</a>
+    </div>
+    <div class="hero-trust"><span>✓ Soluções personalizadas</span><span>✓ Desenvolvimento focado no processo real</span></div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-orb">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="hero-card"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="solucoes">
+  <label>O QUE FAZEMOS</label>
+  <h2>Tecnologia aplicada à rotina da empresa.</h2>
+  <p class="lead">Não partimos de um sistema genérico. Entendemos o processo e desenvolvemos a solução de acordo com a necessidade do negócio.</p>
+  <div class="grid three">
+    <article><i>01</i><h3>Sistemas personalizados</h3><p>Aplicações desenvolvidas para centralizar informações e atender ao fluxo real da empresa.</p></article>
+    <article><i>02</i><h3>Gestão e automação</h3><p>Menos planilhas e tarefas repetitivas, com processos, indicadores e acompanhamento em um só lugar.</p></article>
+    <article><i>03</i><h3>Integrações e IA</h3><p>APIs, automações e recursos inteligentes para conectar ferramentas e ganhar produtividade.</p></article>
+  </div>
+</section>
+
+<section class="section" id="projetos">
+  <div class="section-head">
+    <div><label>PROJETOS REAIS</label><h2>Soluções construídas para necessidades reais.</h2></div>
+    <a href="{{ url_for('projetos') }}">Ver todos →</a>
+  </div>
+  <div class="grid three">
+    {% for p in projects %}
+    <a class="card project-card" href="{{ url_for('projeto', slug=p.slug) }}">
+      <div class="project-logo-wrap"><img class="project-logo" src="{{ url_for('static', filename=p.logo) }}" alt="Logo {{ p.name }}"></div>
+      <small>{{ p.category }}</small><h3>{{ p.name }}</h3><p>{{ p.description }}</p><b>Ver detalhes →</b>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div><label>SOBRE A LIVIZ</label><h2>Tecnologia com propósito prático.</h2></div>
+  <div><p>A Liviz Software desenvolve soluções digitais para empresas que precisam organizar processos, reduzir trabalho manual e transformar ideias em ferramentas que realmente possam ser usadas no dia a dia.</p><p>Do levantamento da necessidade à entrega, o objetivo é criar tecnologia clara, funcional e alinhada ao negócio.</p></div>
+</section>
+
+<section class="banner">
+  <label>VAMOS CONSTRUIR?</label>
+  <h2>Tem um processo que ainda depende de planilhas, mensagens ou controles manuais?</h2>
+  <p>Conte como sua empresa trabalha. Podemos transformar esse processo em uma solução própria.</p>
+  <a class="btn" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Solicitar um orçamento</a>
+  <a class="btn ghost" href="{{ url_for('contato') }}">Outras formas de contato</a>
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+GALERIA DOS PROJETOS
+
+Pastas:
+- ws-zeladoria/
+- dr-reparos/
+- nagahashi/
+
+Quando formos adicionar os prints, salve as imagens na pasta correspondente como:
+tela-01.png
+tela-02.png
+tela-03.png
+
+A página já está preparada visualmente. Depois vamos trocar os placeholders do template projeto.html pelas imagens reais.
