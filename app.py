@@ -1,5 +1,9 @@
 from urllib.parse import quote
 from flask import Flask, render_template, request
+import os
+import smtplib
+import ssl
+from email.message import EmailMessage
 
 app = Flask(__name__)
 
@@ -73,17 +77,55 @@ def projeto(slug):
 
 @app.route("/contato", methods=["GET", "POST"])
 def contato():
-    whatsapp_contact = None
+    status = None
+    form_data = {"nome": "", "email": "", "telefone": "", "empresa": "", "mensagem": ""}
+
     if request.method == "POST":
-        nome = request.form.get("nome", "").strip()
-        empresa = request.form.get("empresa", "").strip()
-        mensagem = request.form.get("mensagem", "").strip()
-        texto = f"Olá! Meu nome é {nome or 'cliente'}"
-        if empresa:
-            texto += f", da empresa {empresa}"
-        texto += f". Entrei em contato pelo site da Liviz Software.\n\n{mensagem}"
-        whatsapp_contact = whatsapp_url(texto)
-    return render_template("contato.html", whatsapp_contact=whatsapp_contact)
+        for field in form_data:
+            form_data[field] = request.form.get(field, "").strip()
+
+        # Campo invisível: bots costumam preenchê-lo.
+        if request.form.get("website", "").strip():
+            return render_template("contato.html", status="success", form_data=form_data)
+
+        if not form_data["nome"] or not form_data["email"] or not form_data["mensagem"]:
+            status = "required"
+        else:
+            smtp_host = os.getenv("SMTP_HOST", "email-ssl.com.br")
+            smtp_port = int(os.getenv("SMTP_PORT", "465"))
+            smtp_user = os.getenv("SMTP_USER", CONTACT_EMAIL)
+            smtp_password = os.getenv("SMTP_PASSWORD", "")
+
+            if not smtp_password:
+                app.logger.error("SMTP_PASSWORD não configurada no ambiente.")
+                status = "error"
+            else:
+                try:
+                    msg = EmailMessage()
+                    msg["Subject"] = f"Novo contato pelo site — {form_data['nome']}"
+                    msg["From"] = f"Liviz Software <{smtp_user}>"
+                    msg["To"] = CONTACT_EMAIL
+                    msg["Reply-To"] = form_data["email"]
+                    msg.set_content(
+                        "Nova solicitação recebida pelo site da Liviz Software\n\n"
+                        f"Nome: {form_data['nome']}\n"
+                        f"E-mail: {form_data['email']}\n"
+                        f"Telefone: {form_data['telefone'] or 'Não informado'}\n"
+                        f"Empresa: {form_data['empresa'] or 'Não informada'}\n\n"
+                        f"Mensagem:\n{form_data['mensagem']}\n"
+                    )
+
+                    context = ssl.create_default_context()
+                    with smtplib.SMTP_SSL(smtp_host, smtp_port, context=context, timeout=20) as server:
+                        server.login(smtp_user, smtp_password)
+                        server.send_message(msg)
+                    status = "success"
+                    form_data = {key: "" for key in form_data}
+                except Exception:
+                    app.logger.exception("Falha ao enviar formulário de contato por SMTP")
+                    status = "error"
+
+    return render_template("contato.html", status=status, form_data=form_data)
 
 
 if __name__ == "__main__":

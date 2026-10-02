@@ -27,18 +27,21 @@
   </div>
 
   <header>
-    <a class="brand" href="{{ url_for('home') }}" aria-label="Liviz Software - início">
-      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Liviz Software">
-      <span><b>LIVIZ</b><small>SOFTWARE</small></span>
+    <a class="brand" href="{{ url_for('home') }}" aria-label="Liviz Software">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Liviz Software">
+        <span><b>LIVIZ</b><small>SOFTWARE</small></span>
     </a>
+
     <nav>
-      <a href="{{ url_for('home') }}">Início</a>
-      <a href="{{ url_for('home') }}#solucoes">Soluções</a>
-      <a href="{{ url_for('projetos') }}">Projetos</a>
-      <a href="{{ url_for('home') }}#sobre">Sobre</a>
-      <a class="cta-link" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a href="{{ url_for('home') }}">Início</a>
+        <a href="{{ url_for('home') }}#solucoes">Soluções</a>
+                <a href="{{ url_for('home') }}#sobre">Sobre</a>
     </nav>
-  </header>
+
+    <a href="{{ url_for('home') }}#projetos" class="btn-orcamento header-projetos">
+        Nossos Projetos
+    </a>
+</header>
 
   <main>{% block content %}{% endblock %}</main>
 
