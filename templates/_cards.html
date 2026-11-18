@@ -22,14 +22,18 @@
     <div class="carousel-nav"><button type="button" class="carousel-btn" data-dir="-1" aria-label="Anterior">‹</button><button type="button" class="carousel-btn" data-dir="1" aria-label="Próximo">›</button></div>
   </div>
   <div class="carousel-track" tabindex="0" aria-label="Modelos prontos">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+  <button type="button" class="carousel-more">Ver mais modelos</button>
   <div class="carousel-foot"><span class="carousel-count"></span><a href="{{ url_for('sistemas') }}">Ver todos em lista →</a></div>
 </div>
 <script>
 (()=>{const root=document.getElementById({{ id|tojson }});if(!root)return;const track=root.querySelector('.carousel-track');
 const cards=[...track.children],count=root.querySelector('.carousel-count');
-function upd(){const n=cards.filter(c=>!c.hidden).length;count.textContent=n+' modelo'+(n>1?'s':'')+' prontos'}
+const more=root.querySelector('.carousel-more');let limit=6;
+function upd(){const vis=cards.filter(c=>!c.hidden);const n=vis.length;count.textContent=n+' modelo'+(n>1?'s':'')+' prontos';
+vis.forEach((c,i)=>c.classList.toggle('m-extra',i>=limit));more.hidden=n<=limit}
+more.addEventListener('click',()=>{limit+=6;upd()});
 root.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));
-const f=b.dataset.filter;cards.forEach(c=>c.hidden=f!=='todos'&&c.dataset.cat!==f);track.scrollTo({left:0,behavior:'smooth'});upd()}));
+const f=b.dataset.filter;cards.forEach(c=>c.hidden=f!=='todos'&&c.dataset.cat!==f);track.scrollTo({left:0,behavior:'smooth'});limit=6;upd()}));
 root.querySelectorAll('.carousel-btn').forEach(b=>b.addEventListener('click',()=>{const c=cards.find(x=>!x.hidden);const step=c?c.getBoundingClientRect().width+18:320;
 track.scrollBy({left:step*Number(b.dataset.dir),behavior:'smooth'})}));upd();})();
 </script>
