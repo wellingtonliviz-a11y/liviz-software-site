@@ -7,7 +7,10 @@
   <p>Modelos completos, testados com clientes reais, que adaptamos à sua marca, aos seus preços e ao seu jeito de trabalhar. Funcionam no computador e no celular.</p>
 </section>
 <section class="section" style="padding-top:20px">
-  <div class="grid three sys-grid">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+  <div class="carousel-chips list-chips" id="lista-filtros">{% for k, label in system_cats %}<button type="button" class="chip{{ ' on' if loop.first }}" data-filter="{{ k }}">{{ label }}</button>{% endfor %}</div>
+  <div class="grid three sys-grid" id="lista-sistemas">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+  <script>document.querySelectorAll('#lista-filtros .chip').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#lista-filtros .chip').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('#lista-sistemas .sys-card').forEach(c=>c.hidden=b.dataset.filter!=='todos'&&c.dataset.cat!==b.dataset.filter)}))</script>
 </section>
 <section class="banner">
   <label>NÃO ACHOU O SEU?</label>

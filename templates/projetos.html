@@ -1,18 +1,18 @@
-{% extends "base.html" %}{% from "_cards.html" import project_card %}
+{% extends "base.html" %}{% from "_cards.html" import project_card, systems_carousel %}
 {% block title %}Clientes e projetos | Liviz Software{% endblock %}
 {% block content %}
 <section class="page">
   <label>PORTFÓLIO</label>
   <h1>Projetos que resolvem problemas reais.</h1>
-  <p>Empresas que usam sistemas da Liviz Software no dia a dia e projetos desenvolvidos sob medida.</p>
+  <p>Empresas que usam sistemas da Liviz Software no dia a dia e modelos prontos para o seu segmento.</p>
 </section>
 <section class="section projects-page-grid" id="clientes">
   <div class="section-head"><div><label>CLIENTES</label><h2>Quem já usa no dia a dia.</h2></div></div>
   <div class="grid three">{% for p in clients %}{{ project_card(p, 'h2') }}{% endfor %}</div>
 </section>
-<section class="section projects-page-grid" id="sob-medida" style="padding-top:0">
-  <div class="section-head"><div><label>SOB MEDIDA</label><h2>Projetos personalizados.</h2></div></div>
-  <div class="grid three">{% for p in projects %}{{ project_card(p, 'h2') }}{% endfor %}</div>
+<section class="section" id="modelos-prontos" style="padding-top:0">
+  <div class="section-head"><div><label>MODELOS PRONTOS</label><h2>Escolha o sistema do seu segmento.</h2></div></div>
+  {{ systems_carousel(systems, system_cats) }}
 </section>
 <section class="banner">
   <label>SISTEMAS PRONTOS</label>

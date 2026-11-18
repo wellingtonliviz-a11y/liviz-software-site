@@ -337,7 +337,7 @@ header nav a:hover::after {
 }
 /* Fundo do quadro da imagem do projeto */
 .project-detail-logo {
-    background: #111111 !important;
+    background: var(--logo-bg, #111111) !important;
     border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -381,3 +381,24 @@ header nav a:hover::after {
 @media(max-width:1000px){.logos-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:850px){.logos-row a{height:80px}.sys-body h3{font-size:20px}}
 @media(max-width:520px){.logos-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Carrossel de modelos prontos ---------- */
+.carousel{position:relative}
+.carousel-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 0 18px;flex-wrap:wrap}
+.carousel-chips{display:flex;gap:8px;flex-wrap:wrap}
+.list-chips{margin:0 0 22px}
+.chip{border:1px solid #35425f;background:transparent;color:#cbd5e1;padding:10px 16px;border-radius:999px;font:700 14px Montserrat,sans-serif;cursor:pointer;transition:.2s}
+.chip:hover{border-color:#7c3aed;color:#fff}
+.chip.on{background:linear-gradient(90deg,#7c3aed,#2563eb);border-color:transparent;color:#fff}
+.carousel-nav{display:flex;gap:8px}
+.carousel-btn{width:46px;height:46px;border-radius:50%;border:1px solid #35425f;background:#0c1426;color:#fff;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.carousel-btn:hover{border-color:#22d3ee;background:#111c33}
+.carousel-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 16px;scrollbar-width:thin;scrollbar-color:#35425f transparent}
+.carousel-track>*{scroll-snap-align:start}
+.carousel-track>[hidden]{display:none}
+.carousel-track::-webkit-scrollbar{height:6px}.carousel-track::-webkit-scrollbar-thumb{background:#35425f;border-radius:9px}
+.carousel-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;color:var(--muted);font-size:14px}
+.carousel-foot a{color:#c084fc;font-weight:700}
+.sys-grid>[hidden]{display:none}
+@media(max-width:1000px){.carousel-track{grid-auto-columns:calc((100% - 18px)/2)}}
+@media(max-width:640px){.carousel-track{grid-auto-columns:86%}.carousel-nav{display:none}.carousel-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -2px;padding-bottom:4px}.carousel-chips::-webkit-scrollbar{display:none}.chip{flex:none}}

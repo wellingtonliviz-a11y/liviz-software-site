@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% from "_cards.html" import project_card, system_card %}
+{% extends "base.html" %}{% from "_cards.html" import project_card, systems_carousel %}
 {% block title %}Liviz Software | Tecnologia que simplifica negócios{% endblock %}
 {% block content %}
 <section class="hero">
@@ -46,21 +46,13 @@
   <div class="grid three">{% for p in clients %}{{ project_card(p) }}{% endfor %}</div>
 </section>
 
-<section class="section" id="sistemas" style="padding-top:0">
+<section class="section" id="modelos-prontos" style="padding-top:0">
   <div class="section-head">
-    <div><label>SISTEMAS PRONTOS</label><h2>Um modelo pronto para o seu segmento.</h2></div>
-    <a href="{{ url_for('sistemas') }}">Ver os {{ systems_total }} sistemas →</a>
+    <div><label>MODELOS PRONTOS</label><h2>Escolha o sistema do seu segmento.</h2></div>
+    <a href="{{ url_for('sistemas') }}">Ver todos →</a>
   </div>
-  <p class="lead" style="margin-top:-12px">Testados com clientes reais e adaptados à sua marca. Abra a demonstração e veja funcionando.</p>
-  <div class="grid three sys-grid">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
-</section>
-
-<section class="section" id="sob-medida" style="padding-top:0">
-  <div class="section-head">
-    <div><label>SOB MEDIDA</label><h2>Projetos personalizados.</h2></div>
-    <a href="{{ url_for('projetos') }}#sob-medida">Ver todos →</a>
-  </div>
-  <div class="grid three">{% for p in projects %}{{ project_card(p) }}{% endfor %}</div>
+  <p class="lead" style="margin-top:-12px">Modelos completos, testados com clientes reais e adaptados à sua marca. Escolha o segmento, arraste para o lado e abra a demonstração.</p>
+  {{ systems_carousel(systems, system_cats) }}
 </section>
 
 <section class="section about" id="sobre">
