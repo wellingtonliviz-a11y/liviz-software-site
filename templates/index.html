@@ -35,7 +35,9 @@
 
 <section class="logos-strip" aria-label="Clientes da Liviz Software">
   <span>Quem já usa sistemas da Liviz</span>
-  <div class="logos-row">{% for p in clients %}<a href="{{ url_for('projeto', slug=p.slug) }}" title="{{ p.name }}" style="background:{{ p.logo_bg }}"><img src="{{ url_for('static', filename=p.logo) }}" alt="{{ p.name }}" loading="lazy"></a>{% endfor %}</div>
+  <div class="logos-marquee">
+    <div class="logos-track">{% for copy in (1, 2) %}{% for p in clients %}<a href="{{ url_for('projeto', slug=p.slug) }}" title="{{ p.name }}" style="background:{{ p.logo_bg }}"{% if copy == 2 %} aria-hidden="true" tabindex="-1"{% endif %}><img src="{{ url_for('static', filename=p.logo) }}" alt="{{ p.name if copy == 1 else '' }}" loading="lazy"></a>{% endfor %}{% endfor %}</div>
+  </div>
 </section>
 
 <section class="section" id="projetos">

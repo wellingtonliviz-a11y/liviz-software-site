@@ -354,10 +354,6 @@ header nav a:hover::after {
 .project-detail-logo img{object-fit:contain}
 .logos-strip{max-width:1400px;margin:0 auto;padding:10px 8% 0;text-align:center}
 .logos-strip>span{display:block;font-size:12px;letter-spacing:3px;font-weight:800;color:#aebbd0;text-transform:uppercase;margin-bottom:18px}
-.logos-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
-.logos-row a{display:grid;place-items:center;height:116px;border-radius:18px;border:1px solid var(--line);padding:8px;transition:.2s}
-.logos-row a:hover{transform:translateY(-3px);border-color:#7c3aed}
-.logos-row img{max-width:100%;max-height:100px;object-fit:contain}
 .sys-grid{align-items:stretch}
 .sys-card{display:flex;flex-direction:column;padding:0;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:22px}
 .sys-card:hover{border-color:#5b3fb3;transform:translateY(-3px)}
@@ -378,9 +374,7 @@ header nav a:hover::after {
 .gallery-item.is-card .gallery-image img{aspect-ratio:1/1;object-fit:cover}
 .gallery-caption{display:flex;gap:10px;align-items:center;margin:10px 4px 0}
 .gallery-caption span{font-size:12px;letter-spacing:2px;color:#64748b;font-weight:800}
-@media(max-width:1000px){.logos-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:850px){.logos-row a{height:80px}.sys-body h3{font-size:20px}}
-@media(max-width:520px){.logos-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.sys-body h3{font-size:20px}}
 
 /* ---------- Carrossel de modelos prontos ---------- */
 .carousel{position:relative}
@@ -402,3 +396,24 @@ header nav a:hover::after {
 .sys-grid>[hidden]{display:none}
 @media(max-width:1000px){.carousel-track{grid-auto-columns:calc((100% - 18px)/2)}}
 @media(max-width:640px){.carousel-track{grid-auto-columns:86%}.carousel-nav{display:none}.carousel-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -2px;padding-bottom:4px}.carousel-chips::-webkit-scrollbar{display:none}.chip{flex:none}}
+
+/* ---------- Faixa "Quem já usa" em carrossel animado ---------- */
+.logos-marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos-track{display:flex;gap:16px;width:max-content;animation:logos-roll 26s linear infinite;padding:6px 0}
+.logos-marquee:hover .logos-track{animation-play-state:paused}
+.logos-track a{flex:none;width:190px;height:116px;display:flex;align-items:center;justify-content:center;border-radius:18px;border:1px solid var(--line);padding:10px;box-sizing:border-box;overflow:hidden;transition:transform .2s,border-color .2s}
+.logos-track a:hover{transform:translateY(-3px);border-color:#7c3aed}
+.logos-track img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+@keyframes logos-roll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}
+@media(max-width:640px){.logos-track{gap:12px;animation-duration:20s}.logos-track a{width:140px;height:92px;padding:8px}}
+@media(prefers-reduced-motion:reduce){.logos-track{animation:none}.logos-marquee{overflow-x:auto}}
+
+/* ---------- Modelos prontos no celular: um embaixo do outro ---------- */
+.carousel-more{display:none}
+@media(max-width:640px){
+  .carousel-track{display:grid;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow:visible;scroll-snap-type:none;padding:0}
+  .carousel-track>.m-extra{display:none}
+  .carousel-more{display:block;width:100%;margin:16px 0 4px;padding:14px;border-radius:12px;border:1px solid #35425f;background:transparent;color:#fff;font:800 15px Montserrat,sans-serif;cursor:pointer}
+  .carousel-more[hidden]{display:none}
+  .carousel-chips{flex-wrap:wrap;overflow:visible}
+}
