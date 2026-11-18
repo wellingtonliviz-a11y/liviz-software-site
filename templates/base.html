@@ -18,7 +18,7 @@
       document.documentElement.classList.add('intro-on');
     }
   </script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='5') }}">
 </head>
 <body>
   <div class="intro" aria-hidden="true">
@@ -35,6 +35,8 @@
     <nav>
         <a href="{{ url_for('home') }}">Início</a>
         <a href="{{ url_for('home') }}#solucoes">Soluções</a>
+        <a href="{{ url_for('projetos') }}">Clientes</a>
+        <a href="{{ url_for('sistemas') }}">Sistemas</a>
                 <a href="{{ url_for('home') }}#sobre">Sobre</a>
     </nav>
 

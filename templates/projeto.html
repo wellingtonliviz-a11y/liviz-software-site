@@ -21,9 +21,14 @@
       <p class="lead">
         {{ project.description }}
       </p>
+      {% if project.client %}<span class="client-badge">● Cliente ativo da Liviz Software</span>{% endif %}
+      <div class="project-cta">
+        {% if project.link %}<a class="btn" href="{{ project.link }}" target="_blank" rel="noopener">{{ project.link_label }} ↗</a>{% endif %}
+        <a class="btn ghost" href="{{ project_whatsapp }}" target="_blank" rel="noopener">Quero um sistema assim</a>
+      </div>
     </div>
 
-    <div class="project-detail-logo">
+    <div class="project-detail-logo" style="background:{{ project.logo_bg or '#080d18' }}">
       <img
         src="{{ url_for('static', filename=project.logo) }}"
         alt="{{ project.name }}"
@@ -66,63 +71,17 @@
 
 
     <div class="project-gallery">
-
-      <!-- TELA 01 -->
-      <div class="gallery-item">
-
+      {% for item in project.gallery %}
+      <div class="gallery-item{{ ' is-phone' if item|length > 2 and item[2] == 'm' else '' }}{{ ' is-card' if item|length > 2 and item[2] == 'c' else '' }}">
         <div class="gallery-image">
-          <img
-            src="{{ url_for('static', filename=project.gallery_folder + '/tela-01.png') }}"
-            alt="{{ project.name }} - Tela 01"
-            loading="lazy"
-          >
+          <img src="{{ url_for('static', filename=item[0]) }}" alt="{{ project.name }} - {{ item[1] }}" loading="lazy">
         </div>
-
         <div class="gallery-caption">
-          <span>01</span>
-          <strong>Dashboard / tela principal</strong>
+          <span>{{ '%02d' % loop.index }}</span>
+          <strong>{{ item[1] }}</strong>
         </div>
-
       </div>
-
-
-      <!-- TELA 02 -->
-      <div class="gallery-item">
-
-        <div class="gallery-image">
-          <img
-            src="{{ url_for('static', filename=project.gallery_folder + '/tela-02.png') }}"
-            alt="{{ project.name }} - Tela 02"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="gallery-caption">
-          <span>02</span>
-          <strong>Funcionalidades do sistema</strong>
-        </div>
-
-      </div>
-
-
-      <!-- TELA 03 -->
-      <div class="gallery-item">
-
-        <div class="gallery-image">
-          <img
-            src="{{ url_for('static', filename=project.gallery_folder + '/tela-03.png') }}"
-            alt="{{ project.name }} - Tela 03"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="gallery-caption">
-          <span>03</span>
-          <strong>Detalhes da operação</strong>
-        </div>
-
-      </div>
-
+      {% endfor %}
     </div>
 
   </section>
