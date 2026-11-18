@@ -1,24 +1,24 @@
-{% extends "base.html" %}
-{% block title %}Projetos | Liviz Software{% endblock %}
+{% extends "base.html" %}{% from "_cards.html" import project_card %}
+{% block title %}Clientes e projetos | Liviz Software{% endblock %}
 {% block content %}
 <section class="page">
   <label>PORTFÓLIO</label>
   <h1>Projetos que resolvem problemas reais.</h1>
-  <p>Conheça algumas das soluções desenvolvidas pela Liviz Software.</p>
+  <p>Empresas que usam sistemas da Liviz Software no dia a dia e projetos desenvolvidos sob medida.</p>
 </section>
-<section class="section projects-page-grid">
-  <div class="grid three">
-    {% for p in projects %}
-    <a class="card project-card" href="{{ url_for('projeto', slug=p.slug) }}">
-      <div class="project-logo-wrap">
-        <img class="project-logo" src="{{ url_for('static', filename=p.logo) }}" alt="{{ p.name }}">
-      </div>
-      <small>{{ p.category }}</small>
-      <h2>{{ p.name }}</h2>
-      <p>{{ p.description }}</p>
-      <b>Ver detalhes →</b>
-    </a>
-    {% endfor %}
-  </div>
+<section class="section projects-page-grid" id="clientes">
+  <div class="section-head"><div><label>CLIENTES</label><h2>Quem já usa no dia a dia.</h2></div></div>
+  <div class="grid three">{% for p in clients %}{{ project_card(p, 'h2') }}{% endfor %}</div>
+</section>
+<section class="section projects-page-grid" id="sob-medida" style="padding-top:0">
+  <div class="section-head"><div><label>SOB MEDIDA</label><h2>Projetos personalizados.</h2></div></div>
+  <div class="grid three">{% for p in projects %}{{ project_card(p, 'h2') }}{% endfor %}</div>
+</section>
+<section class="banner">
+  <label>SISTEMAS PRONTOS</label>
+  <h2>Tem um modelo pronto para o seu segmento.</h2>
+  <p>Mais de 20 sistemas prontos para adaptar à sua marca: restaurantes, clínicas, oficinas, imobiliárias, locações e muito mais.</p>
+  <a class="btn" href="{{ url_for('sistemas') }}">Ver os sistemas prontos</a>
+  <a class="btn ghost" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
 </section>
 {% endblock %}

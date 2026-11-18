@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% from "_cards.html" import project_card, system_card %}
 {% block title %}Liviz Software | Tecnologia que simplifica negócios{% endblock %}
 {% block content %}
 <section class="hero">
@@ -10,7 +10,7 @@
       <a class="btn" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Solicitar um orçamento</a>
       <a class="btn ghost" href="#projetos">Conhecer projetos</a>
     </div>
-    <div class="hero-trust"><span>✓ Soluções personalizadas</span><span>✓ Desenvolvimento focado no processo real</span></div>
+    <div class="hero-trust"><span>✓ Soluções personalizadas</span><span>✓ Desenvolvimento focado no processo real</span><span>✓ {{ clients|length }} clientes ativos</span></div>
   </div>
 
   <div class="hero-visual" aria-hidden="true">
@@ -33,19 +33,34 @@
   </div>
 </section>
 
+<section class="logos-strip" aria-label="Clientes da Liviz Software">
+  <span>Quem já usa sistemas da Liviz</span>
+  <div class="logos-row">{% for p in clients %}<a href="{{ url_for('projeto', slug=p.slug) }}" title="{{ p.name }}" style="background:{{ p.logo_bg }}"><img src="{{ url_for('static', filename=p.logo) }}" alt="{{ p.name }}" loading="lazy"></a>{% endfor %}</div>
+</section>
+
 <section class="section" id="projetos">
   <div class="section-head">
-    <div><label>PROJETOS REAIS</label><h2>Soluções construídas para necessidades reais.</h2></div>
-    <a href="{{ url_for('projetos') }}">Ver todos →</a>
+    <div><label>CLIENTES</label><h2>Sistemas que já rodam no dia a dia.</h2></div>
+    <a href="{{ url_for('projetos') }}">Ver clientes e projetos →</a>
   </div>
-  <div class="grid three">
-    {% for p in projects %}
-    <a class="card project-card" href="{{ url_for('projeto', slug=p.slug) }}">
-      <div class="project-logo-wrap"><img class="project-logo" src="{{ url_for('static', filename=p.logo) }}" alt="Logo {{ p.name }}"></div>
-      <small>{{ p.category }}</small><h3>{{ p.name }}</h3><p>{{ p.description }}</p><b>Ver detalhes →</b>
-    </a>
-    {% endfor %}
+  <div class="grid three">{% for p in clients %}{{ project_card(p) }}{% endfor %}</div>
+</section>
+
+<section class="section" id="sistemas" style="padding-top:0">
+  <div class="section-head">
+    <div><label>SISTEMAS PRONTOS</label><h2>Um modelo pronto para o seu segmento.</h2></div>
+    <a href="{{ url_for('sistemas') }}">Ver os {{ systems_total }} sistemas →</a>
   </div>
+  <p class="lead" style="margin-top:-12px">Testados com clientes reais e adaptados à sua marca. Abra a demonstração e veja funcionando.</p>
+  <div class="grid three sys-grid">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+</section>
+
+<section class="section" id="sob-medida" style="padding-top:0">
+  <div class="section-head">
+    <div><label>SOB MEDIDA</label><h2>Projetos personalizados.</h2></div>
+    <a href="{{ url_for('projetos') }}#sob-medida">Ver todos →</a>
+  </div>
+  <div class="grid three">{% for p in projects %}{{ project_card(p) }}{% endfor %}</div>
 </section>
 
 <section class="section about" id="sobre">

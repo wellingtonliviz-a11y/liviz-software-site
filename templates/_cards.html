@@ -1,0 +1,16 @@
+{% macro project_card(p, tag='h3') %}
+<a class="card project-card" href="{{ url_for('projeto', slug=p.slug) }}">
+  <div class="project-logo-wrap" style="background:{{ p.logo_bg or '#080d18' }}"><img class="project-logo" src="{{ url_for('static', filename=p.logo) }}" alt="Logo {{ p.name }}" loading="lazy"></div>
+  {% if p.client %}<span class="client-badge">● Cliente ativo</span>{% endif %}
+  <small>{{ p.category }}</small><{{ tag }}>{{ p.name }}</{{ tag }}><p>{{ p.description }}</p><b>Ver detalhes →</b>
+</a>
+{% endmacro %}
+
+{% macro system_card(s) %}
+<article class="card sys-card">
+  <div class="sys-img"><img src="{{ url_for('static', filename=s.image) }}" alt="{{ s.full }}" loading="lazy"></div>
+  <div class="sys-body"><small>Sistema pronto · {{ s.num }}</small><h3>{{ s.title }}</h3><p>{{ s.text }}</p>
+  <div class="sys-actions">{% if 'gestao.' in s.link %}<a class="sys-demo" href="{{ s.link }}" target="_blank" rel="noopener">Ver demonstração ↗</a>{% endif %}
+  <a class="sys-wa" href="{{ s.whatsapp or whatsapp_url }}" target="_blank" rel="noopener">Quero este sistema</a></div></div>
+</article>
+{% endmacro %}

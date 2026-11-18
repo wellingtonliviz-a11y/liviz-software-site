@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% from "_cards.html" import system_card %}
+{% block title %}Sistemas prontos | Liviz Software{% endblock %}
+{% block content %}
+<section class="page">
+  <label>SISTEMAS PRONTOS</label>
+  <h1>Um sistema pronto para o seu segmento.</h1>
+  <p>Modelos completos, testados com clientes reais, que adaptamos à sua marca, aos seus preços e ao seu jeito de trabalhar. Funcionam no computador e no celular.</p>
+</section>
+<section class="section" style="padding-top:20px">
+  <div class="grid three sys-grid">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+</section>
+<section class="banner">
+  <label>NÃO ACHOU O SEU?</label>
+  <h2>Também desenvolvemos sob medida.</h2>
+  <p>Conte como sua empresa trabalha e montamos a solução a partir do seu processo.</p>
+  <a class="btn" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Solicitar um orçamento</a>
+</section>
+{% endblock %}

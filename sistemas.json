@@ -1,0 +1,194 @@
+[
+ {
+  "num": "01",
+  "title": "Faturamento Médico",
+  "full": "Sistema de Faturamento Médico",
+  "text": "Lançamento da produção, envio de lotes aos convênios, glosas e recursos, fechamento mensal por clínica e portal para clínicas e médicos. Tudo online, com a marca da sua empresa.",
+  "link": "https://livizsoftware.com.br",
+  "image": "img/sistemas/01_faturamento_medico.webp"
+ },
+ {
+  "num": "02",
+  "title": "Imobiliária",
+  "full": "Sistema para Imobiliária",
+  "text": "Imóveis, leads, CRM, agenda de visitas, contratos e financeiro com comissões. Vitrine de imóveis online para os clientes.",
+  "link": "https://livizsoftware.com.br",
+  "image": "img/sistemas/02_imobiliaria.webp"
+ },
+ {
+  "num": "03",
+  "title": "Hamburgueria",
+  "full": "Sistema para Hamburgueria",
+  "text": "Cardápio digital com fotos, pedido direto no WhatsApp, central de pedidos, comanda, taxa de entrega por distância e fechamento do dia.",
+  "link": "https://gestao.livizsoftware.com.br/c/demo-brasa-burger",
+  "image": "img/sistemas/03_brasa-burger.webp"
+ },
+ {
+  "num": "04",
+  "title": "Pizzaria",
+  "full": "Sistema para Pizzaria",
+  "text": "Cardápio digital com montagem de pizza (sabores, bordas e tamanhos), central de pedidos, comanda e entregas.",
+  "link": "https://gestao.livizsoftware.com.br/c/demo-brumas-pizzaria",
+  "image": "img/sistemas/04_brumas-pizzaria.webp"
+ },
+ {
+  "num": "05",
+  "title": "Restaurante e Marmitaria",
+  "full": "Sistema para Restaurante e Marmitaria",
+  "text": "Cardápio do dia, marmitex montada pelo cliente, central de pedidos, comanda, estoque e fechamento diário.",
+  "link": "https://gestao.livizsoftware.com.br/c/demo-sabor-de-casa-pro",
+  "image": "img/sistemas/05_sabor-de-casa.webp"
+ },
+ {
+  "num": "06",
+  "title": "Açaíteria",
+  "full": "Sistema para Açaíteria",
+  "text": "Cliente monta o açaí (tamanho e complementos) pelo cardápio digital. Central de pedidos, comanda e entregas.",
+  "link": "https://gestao.livizsoftware.com.br/c/demo-acai-da-vila-pro",
+  "image": "img/sistemas/06_acai-da-vila.webp"
+ },
+ {
+  "num": "07",
+  "title": "Empório e Delicatessen",
+  "full": "Sistema para Empório e Delicatessen",
+  "text": "Catálogo de produtos online, encomendas, central de pedidos e entregas.",
+  "link": "https://gestao.livizsoftware.com.br/c/demo-emporio-mineiro-pro",
+  "image": "img/sistemas/07_emporio-mineiro.webp"
+ },
+ {
+  "num": "08",
+  "title": "Food Truck",
+  "full": "Sistema para Food Truck",
+  "text": "Caixa rápido, cardápio, estoque e agenda de eventos com relatório de cada evento.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-foodtruck",
+  "image": "img/sistemas/08_foodtruck.webp"
+ },
+ {
+  "num": "09",
+  "title": "Buffet e Eventos",
+  "full": "Sistema para Buffet e Eventos",
+  "text": "Orçamento online, pacotes, agenda de eventos, sinal e contratos.",
+  "link": "https://gestao.livizsoftware.com.br/eventos/demo-crepe-eventos-pro",
+  "image": "img/sistemas/09_crepe-eventos.webp"
+ },
+ {
+  "num": "10",
+  "title": "Oficina Mecânica",
+  "full": "Sistema para Oficina Mecânica",
+  "text": "Ordens de serviço, orçamentos, histórico por placa e aviso de revisão para o cliente.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-oficina",
+  "image": "img/sistemas/10_oficina.webp"
+ },
+ {
+  "num": "11",
+  "title": "Estacionamento",
+  "full": "Sistema para Estacionamento",
+  "text": "Entrada e saída pela placa, vagas em tempo real, tabela de preços, mensalistas e caixa do dia.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-estacionamento",
+  "image": "img/sistemas/11_estacionamento.webp"
+ },
+ {
+  "num": "12",
+  "title": "Clínica Veterinária",
+  "full": "Sistema para Clínica Veterinária",
+  "text": "Agenda, pacientes e tutores, vacinas a vencer e agendamento pelo site.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-veterinaria",
+  "image": "img/sistemas/12_veterinaria.webp"
+ },
+ {
+  "num": "13",
+  "title": "Clínica Odontológica",
+  "full": "Sistema para Clínica Odontológica",
+  "text": "Agenda por dentista, pacientes, tratamentos e confirmação de consultas.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-odonto",
+  "image": "img/sistemas/13_odonto.webp"
+ },
+ {
+  "num": "14",
+  "title": "Barbearia",
+  "full": "Sistema para Barbearia",
+  "text": "Agenda online por profissional, serviços e preços, encaixes e faturamento.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-barbearia",
+  "image": "img/sistemas/14_barbearia.webp"
+ },
+ {
+  "num": "15",
+  "title": "Lava-Rápido e Estética Automotiva",
+  "full": "Sistema para Lava-Rápido e Estética Automotiva",
+  "text": "Pátio em tempo real, fila de lavagem, clientes e fidelidade, caixa e financeiro.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-lava-rapido",
+  "image": "img/sistemas/15_lava-rapido.webp"
+ },
+ {
+  "num": "16",
+  "title": "Locação de Tendas e Estruturas",
+  "full": "Sistema para Locação de Tendas e Estruturas",
+  "text": "Estoque por data, orçamentos, contratos e agenda de montagens e retiradas.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-locacao",
+  "image": "img/sistemas/16_locacao.webp"
+ },
+ {
+  "num": "17",
+  "title": "Locação de Festas",
+  "full": "Sistema para Locação de Festas",
+  "text": "Brinquedos, mesas e cadeiras com disponibilidade por data, orçamentos e reservas.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-alegria-kids",
+  "image": "img/sistemas/17_alegria-kids.webp"
+ },
+ {
+  "num": "18",
+  "title": "Locadora de Veículos",
+  "full": "Sistema para Locadora de Veículos",
+  "text": "Frota, motoristas de aplicativo, cobranças semanais, alertas de documentos e manutenção.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-locadora",
+  "image": "img/sistemas/18_locadora.webp"
+ },
+ {
+  "num": "19",
+  "title": "Revenda de Veículos",
+  "full": "Sistema para Revenda de Veículos",
+  "text": "Estoque de veículos, vitrine online, interessados e vendas.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-revenda",
+  "image": "img/sistemas/19_revenda.webp"
+ },
+ {
+  "num": "20",
+  "title": "Transporte Executivo",
+  "full": "Sistema para Transporte Executivo",
+  "text": "Agenda de viagens, reservas pelo site, clientes e valores por trajeto.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-transporte",
+  "image": "img/sistemas/20_transporte.webp"
+ },
+ {
+  "num": "21",
+  "title": "Encomendas e Impressão 3D",
+  "full": "Sistema para Encomendas e Impressão 3D",
+  "text": "Pedidos, fila de produção, prévia para o cliente aprovar e controle de materiais.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-encomendas",
+  "image": "img/sistemas/21_encomendas.webp"
+ },
+ {
+  "num": "23",
+  "title": "Fretes e Mudanças",
+  "full": "Sistema para Fretes e Mudanças",
+  "text": "Cotações, viagens programadas, espaço livre no caminhão e cargas.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-fretes",
+  "image": "img/sistemas/23_fretes.webp"
+ },
+ {
+  "num": "24",
+  "title": "Assistência Técnica",
+  "full": "Sistema para Assistência Técnica",
+  "text": "Ordens de serviço, orçamentos, peças, garantia e venda de acessórios.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-duplatech",
+  "image": "img/sistemas/24_duplatech.webp"
+ },
+ {
+  "num": "25",
+  "title": "Hotel Pet",
+  "full": "Sistema para Hotel Pet",
+  "text": "Reservas, mapa de ocupação, vacinas, chegadas e saídas do dia.",
+  "link": "https://gestao.livizsoftware.com.br/s/demo-hotel-pet",
+  "image": "img/sistemas/25_hotel-pet.webp"
+ }
+]
