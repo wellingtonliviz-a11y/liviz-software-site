@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="project-detail-logo" style="background:{{ project.logo_bg or '#080d18' }}">
+    <div class="project-detail-logo" style="--logo-bg:{{ project.logo_bg or '#111111' }}">
       <img
         src="{{ url_for('static', filename=project.logo) }}"
         alt="{{ project.name }}"

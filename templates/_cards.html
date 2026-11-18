@@ -7,10 +7,30 @@
 {% endmacro %}
 
 {% macro system_card(s) %}
-<article class="card sys-card">
+<article class="card sys-card" data-cat="{{ s.cat }}">
   <div class="sys-img"><img src="{{ url_for('static', filename=s.image) }}" alt="{{ s.full }}" loading="lazy"></div>
   <div class="sys-body"><small>Sistema pronto · {{ s.num }}</small><h3>{{ s.title }}</h3><p>{{ s.text }}</p>
   <div class="sys-actions">{% if 'gestao.' in s.link %}<a class="sys-demo" href="{{ s.link }}" target="_blank" rel="noopener">Ver demonstração ↗</a>{% endif %}
   <a class="sys-wa" href="{{ s.whatsapp or whatsapp_url }}" target="_blank" rel="noopener">Quero este sistema</a></div></div>
 </article>
+{% endmacro %}
+
+{% macro systems_carousel(systems, cats, id='modelos') %}
+<div class="carousel" id="{{ id }}">
+  <div class="carousel-top">
+    <div class="carousel-chips" role="tablist" aria-label="Escolha o segmento">{% for k, label in cats %}<button type="button" class="chip{{ ' on' if loop.first }}" data-filter="{{ k }}">{{ label }}</button>{% endfor %}</div>
+    <div class="carousel-nav"><button type="button" class="carousel-btn" data-dir="-1" aria-label="Anterior">‹</button><button type="button" class="carousel-btn" data-dir="1" aria-label="Próximo">›</button></div>
+  </div>
+  <div class="carousel-track" tabindex="0" aria-label="Modelos prontos">{% for s in systems %}{{ system_card(s) }}{% endfor %}</div>
+  <div class="carousel-foot"><span class="carousel-count"></span><a href="{{ url_for('sistemas') }}">Ver todos em lista →</a></div>
+</div>
+<script>
+(()=>{const root=document.getElementById({{ id|tojson }});if(!root)return;const track=root.querySelector('.carousel-track');
+const cards=[...track.children],count=root.querySelector('.carousel-count');
+function upd(){const n=cards.filter(c=>!c.hidden).length;count.textContent=n+' modelo'+(n>1?'s':'')+' prontos'}
+root.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));
+const f=b.dataset.filter;cards.forEach(c=>c.hidden=f!=='todos'&&c.dataset.cat!==f);track.scrollTo({left:0,behavior:'smooth'});upd()}));
+root.querySelectorAll('.carousel-btn').forEach(b=>b.addEventListener('click',()=>{const c=cards.find(x=>!x.hidden);const step=c?c.getBoundingClientRect().width+18:320;
+track.scrollBy({left:step*Number(b.dataset.dir),behavior:'smooth'})}));upd();})();
+</script>
 {% endmacro %}

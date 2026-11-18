@@ -11,9 +11,6 @@ app = Flask(__name__)
 WHATSAPP_NUMBER = "5511927206740"
 CONTACT_EMAIL = "contato@livizsoftware.com.br"
 
-GENERIC_GALLERY = [("tela-01.png", "Dashboard / tela principal"), ("tela-02.png", "Funcionalidades do sistema"),
-                   ("tela-03.png", "Detalhes da operação")]
-
 # Clientes que usam sistemas da Liviz no dia a dia (telas reais; painéis internos com dados de exemplo).
 CLIENTS = [
     {
@@ -94,48 +91,25 @@ CLIENTS = [
     },
 ]
 
-PROJECTS = [
-    {
-        "slug": "ws-zeladoria",
-        "name": "WS Zeladoria",
-        "category": "Gestão de atendimentos",
-        "description": "Sistema sob medida para organizar clientes, chamados, execução de serviços e faturamento em uma única operação.",
-        "logo": "img/projects/ws-zeladoria.png", "logo_bg": "#ffffff",
-        "gallery_folder": "img/projects/ws-zeladoria",
-        "features": ["Dashboard operacional", "Clientes e histórico", "Controle de atendimentos", "Acompanhamento de faturamento", "Acesso online"],
-    },
-    {
-        "slug": "dr-reparos-erp",
-        "name": "DR Reparos ERP",
-        "category": "Gestão empresarial",
-        "description": "ERP criado a partir de uma operação real para centralizar clientes, orçamentos, serviços, faturamento, custos e indicadores.",
-        "logo": "img/projects/dr-reparos.png", "logo_bg": "#111111",
-        "gallery_folder": "img/projects/dr-reparos",
-        "features": ["Clientes", "Orçamentos e PDFs", "Serviços", "Faturamento", "Custos e indicadores"],
-    },
-    {
-        "slug": "nagahashi-controle",
-        "name": "Nagahashi Controle",
-        "category": "Controle financeiro",
-        "description": "Aplicação personalizada para acompanhar clientes, capital emprestado, juros, vencimentos e pagamentos com mais clareza.",
-        "logo": "img/projects/nagahashi.png", "logo_bg": "#ffffff",
-        "gallery_folder": "img/projects/nagahashi",
-        "features": ["Clientes", "Capital emprestado", "Juros por ciclo", "Pagamentos", "Acompanhamento de vencimentos"],
-    },
-]
-for _p in PROJECTS:
-    _p["gallery"] = [(f"{_p['gallery_folder']}/{f}", cap) for f, cap in GENERIC_GALLERY]
 for _p in CLIENTS:
     _p["client"] = True
-ALL_PROJECTS = CLIENTS + PROJECTS
+ALL_PROJECTS = CLIENTS
 
 # Sistemas prontos (mesmos cartões do catálogo do WhatsApp). Gerado de sistemas.json.
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sistemas.json"), encoding="utf-8") as _f:
     SYSTEMS = json.load(_f)
+SYSTEM_CATS = [("todos", "Todos"), ("alimentacao", "Alimentação"), ("saude", "Saúde e bem-estar"),
+               ("veiculos", "Veículos"), ("servicos", "Serviços e locação")]
 
 
 def whatsapp_url(message="Olá! Conheci a Liviz Software pelo site e gostaria de conversar sobre um sistema para o meu negócio."):
     return f"https://wa.me/{WHATSAPP_NUMBER}?text={quote(message)}"
+
+
+def systems_wa():
+    """Modelos prontos com a mensagem de WhatsApp já preenchida para cada um."""
+    return [dict(x, whatsapp=whatsapp_url(f"Olá! Vi o {x['full']} no site da Liviz Software e gostaria de saber mais."))
+            for x in SYSTEMS]
 
 
 @app.context_processor
@@ -149,18 +123,17 @@ def inject_company_data():
 
 @app.route("/")
 def home():
-    return render_template("index.html", clients=CLIENTS, projects=PROJECTS, systems=SYSTEMS[:6], systems_total=len(SYSTEMS))
+    return render_template("index.html", clients=CLIENTS, systems=systems_wa(), system_cats=SYSTEM_CATS)
 
 
 @app.route("/projetos")
 def projetos():
-    return render_template("projetos.html", clients=CLIENTS, projects=PROJECTS)
+    return render_template("projetos.html", clients=CLIENTS, systems=systems_wa(), system_cats=SYSTEM_CATS)
 
 
 @app.route("/sistemas")
 def sistemas():
-    msg = lambda t: whatsapp_url(f"Olá! Vi o {t} no site da Liviz Software e gostaria de saber mais.")
-    return render_template("sistemas.html", systems=[dict(x, whatsapp=msg(x["full"])) for x in SYSTEMS])
+    return render_template("sistemas.html", systems=systems_wa(), system_cats=SYSTEM_CATS)
 
 
 @app.route("/projetos/<slug>")
